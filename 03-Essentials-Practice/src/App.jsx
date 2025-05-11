@@ -14,7 +14,7 @@ function App() {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
-        [initialInvestment]: newValue,
+        [initialInvestment]: +newValue,
         // object["key"]
         // object.key 는 직접 수정 => 불변성 꺠짐
         // [key]: value <- 기존 키값과 벨류 값을 덮어씀
