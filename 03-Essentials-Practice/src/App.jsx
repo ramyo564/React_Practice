@@ -1,17 +1,12 @@
-import { useState } from "react";
 import Header from "./components/Header";
-import ResultTables from "./components/ResultTables";
-import UserTable from "./components/UserTable";
+import UserInput from "./components/UserInput";
 
 function App() {
-
   return (
     <>
       <Header />
-
+      <UserInput />
     </>
-
-
   );
 }
 
