@@ -6,7 +6,7 @@ const ControlContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
-`
+`;
 
 const Lable = styled.label`
   display: block;
@@ -15,19 +15,19 @@ const Lable = styled.label`
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #6b7280;
-`
+  color: ${(props) => (props.invalid ? "#f87171" : "#6b7280")};
+`;
 
 const Input = styled.input`
-width: 100%;
+  width: 100%;
   padding: 0.75rem 1rem;
   line-height: 1.5;
-  background-color: #d1d5db;
-  color: #374151;
-  border: 1px solid transparent;
+  background-color: ${({ invalid }) => (invalid ? "#fed2d2" : "#d1d5db")};
+  color: ${({ invalid }) => (invalid ? "#ef4444" : "#374151")};
+  border: 1px solid ${({ invalid }) => (invalid ? "#f73f3f" : "#transparent")};
   border-radius: 0.25rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-`
+`;
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -53,24 +53,20 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <ControlContainer>
         <p>
-          <Lable className={`label ${emailNotValid ? "invalid" : ""}`}>
-            Email
-          </Lable>
+          <Lable invalid={emailNotValid}>Email</Lable>
           <Input
             type="email"
-            className={emailNotValid ? "invalid" : undefined}
+            invalid={emailNotValid}
             // className={emailNotValid && "invalid"} <-- 이렇게 되면 조건이 안 맞을 때
             // 클래스 이름이 false가 되므로 에러 발생
             onChange={(event) => handleInputChange("email", event.target.value)}
           />
         </p>
         <p>
-          <Lable className={`label ${passwordNotValid ? "invalid" : ""}`}>
-            Password
-          </Lable>
+          <Lable invalid={passwordNotValid}>Password</Lable>
           <Input
             type="password"
-            className={passwordNotValid ? "invalid" : undefined}
+            invalid={passwordNotValid}
             onChange={(event) =>
               handleInputChange("password", event.target.value)
             }
