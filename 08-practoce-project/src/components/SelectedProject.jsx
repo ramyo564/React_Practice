@@ -12,16 +12,12 @@ export default function SelectedProject({
     month: "short",
     day: "numeric",
   });
-  const selectedTasks = tasks.filter(
-    (task) => String(task.projectId) === String(project.id)
-    
-  );
 
 
-//   const selectedTasks = tasks.filter((task) => {
-//   console.log("task.projectId:", task.projectId, " / project.id:", project.id);
-//   return String(task.projectId) === String(project.id);
-// });
+  const selectedTasks = tasks.filter((task) => {
+  // console.log("task.projectId:", task.projectId, " / project.id:", project.id);
+  return task.projectId === project.id;
+});
 
 
   return (
