@@ -14,6 +14,14 @@ function App() {
   const [pickedPlaces, setPickedPlaces] = useState([]);
 
   useEffect(() => {
+    const storeIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    const setPlaces = storeIds.map((id) =>
+      AVAILABLE_PLACES.find((place) => place.id === id)
+    );
+    setPickedPlaces(setPlaces);
+  }, []);
+
+  useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
         AVAILABLE_PLACES,
@@ -52,6 +60,12 @@ function App() {
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
     modal.current.close();
+
+    const storeIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    localStorage.setItem(
+      "selectedPlaces",
+      JSON.stringify(storeIds.filter((id) => id !== selectedPlace.current))
+    );
   }
 
   return (
