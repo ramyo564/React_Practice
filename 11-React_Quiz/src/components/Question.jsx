@@ -3,7 +3,11 @@ import Answers from "./Answers";
 import QuestionTimer from "./QuestionTimer";
 import QUESTIONS from "../questions.js";
 
-export default function Question({ questionIndex, onSelectAnswer, onSkipAnswer }) {
+export default function Question({
+  questionIndex,
+  onSelectAnswer,
+  onSkipAnswer,
+}) {
   const [answer, setAnswer] = useState({
     selectedAnswer: "",
     isCorrect: null,

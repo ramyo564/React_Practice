@@ -5,8 +5,8 @@ import Question from "./Question.jsx";
 
 export default function Quiz() {
   const [userAnswers, setUserAnswers] = useState([]);
-  const activeQuestionIndex = userAnswers.length;
 
+  const activeQuestionIndex = userAnswers.length;
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
   const handleSelectAnswer = useCallback(function handleSelectAnswer(
@@ -18,9 +18,10 @@ export default function Quiz() {
   },
   []);
 
-  const handleSkipAnswer = useCallback(() => {
-    handleSelectAnswer(null);
-  }, [handleSelectAnswer]);
+  const handleSkipAnswer = useCallback(
+    () => handleSelectAnswer(null),
+    [handleSelectAnswer]
+  );
 
   if (quizIsComplete) {
     return (
@@ -34,6 +35,7 @@ export default function Quiz() {
   return (
     <div id="quiz">
       <Question
+        key={activeQuestionIndex}
         questionIndex={activeQuestionIndex}
         onSelectAnswer={handleSelectAnswer}
         onSkipAnswer={handleSkipAnswer}
