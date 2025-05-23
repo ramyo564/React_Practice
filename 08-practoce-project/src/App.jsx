@@ -95,11 +95,6 @@ function App() {
     (project) => project.id === projectsState.selectedProjectId
   );
 
-  const selectedProjectWithTasks = projectsState.tasks.filter(
-    (task) =>
-      String(task.projectId) === String(selectedProject?.selectedProjectId)
-  );
-
   let content = (
     <SelectedProject
       project={selectedProject}
