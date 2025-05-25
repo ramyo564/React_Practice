@@ -10,7 +10,7 @@ import Error from './components/Error.jsx';
 
 function App() {
   const selectedPlace = useRef();
-
+ 
   const [userPlaces, setUserPlaces] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState();
