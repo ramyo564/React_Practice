@@ -8,6 +8,8 @@ import {
 
 export default function Signup() {
   function signupAction(prevFormState, formData) {
+    if (!formData) return initialFormState;
+
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirm-password");
@@ -61,9 +63,24 @@ export default function Signup() {
     return { errors: null };
   }
 
-  const [formState, formAction] = useActionState(signupAction, {
+  const initialFormState = {
     errors: null,
-  });
+    enteredValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      firstName: "",
+      lastName: "",
+      role: "student",
+      acquisitionChannel: [],
+      terms: false,
+    },
+  };
+
+  const [formState, formAction] = useActionState(
+    signupAction,
+    initialFormState
+  );
 
   return (
     <form action={formAction}>
@@ -204,7 +221,14 @@ export default function Signup() {
       )}
 
       <p className="form-actions">
-        <button type="reset" className="button button-flat">
+        <button
+          type="reset"
+          className="button button-flat"
+          onClick={(e) => {
+            e.preventDefault();
+            formAction();
+          }}
+        >
           Reset
         </button>
         <button className="button">Sign up</button>
