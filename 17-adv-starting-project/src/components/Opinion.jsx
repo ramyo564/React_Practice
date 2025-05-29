@@ -53,7 +53,7 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
             <path d="M12 16V8" />
           </svg>
         </button>
-
+ 
         <span>{optimisticVotes}</span>
 
         <button
