@@ -11,15 +11,13 @@
   ],
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "js": true
     },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks"
-  ],
+  "plugins": ["react", "react-hooks"],
   "rules": {
     "no-unused-vars": "error",
     "react/react-in-jsx-scope": "off",
@@ -30,4 +28,4 @@
       "version": "detect"
     }
   }
-} 
+}
