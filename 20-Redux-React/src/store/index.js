@@ -1,9 +1,10 @@
 import { createStore } from "redux";
+import { INCREMENT } from "../components/Counter";
 
 const initialState = { counter: 0, showCounter: true };
 
 const counterReducer = (state = initialState, action) => {
-  if (action.type === "increment") {
+  if (action.type === INCREMENT) {
     return {
       counter: state.counter + 1,
       showCounter: state.showCounter,
