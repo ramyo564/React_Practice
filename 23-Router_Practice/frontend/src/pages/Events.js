@@ -21,4 +21,4 @@ export async function loader() {
     const resData = await response.json();
     return resData.events;
   }
-} 
+}
