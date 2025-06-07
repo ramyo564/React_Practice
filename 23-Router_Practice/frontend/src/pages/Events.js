@@ -27,6 +27,7 @@ export async function loader() {
       status: 500,
     });
   } else {
-    return response;
+    const data = await response.json();
+    return data;
   }
 }
