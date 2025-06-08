@@ -37,7 +37,7 @@ const router = createBrowserRouter([
               <Suspense fallback={<p>Loading...</p>}>
                 <PostPage />
               </Suspense>
-            ),
+            ), 
             loader: ({ params }) =>
               import("./pages/Post").then((module) =>
                 module.loader({ params })
